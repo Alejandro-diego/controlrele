@@ -1,6 +1,6 @@
 # controlrele
 
-A new Flutter project.
+Esp32 Ble wi-fi setup and firebaseDatabase control
 
 ## Getting Started
 
