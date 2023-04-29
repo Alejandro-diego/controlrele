@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "901079063562",
+    "project_id": "controlrele-34c15",
+    "storage_bucket": "controlrele-34c15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:901079063562:android:5d5f6034a7e56f23b493f3",
+        "android_client_info": {
+          "package_name": "br.dev.iotech.controlrele"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "901079063562-6o6rudjj0e3bl14plsnuafq3avu0qlmm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "br.dev.iotech.controlrele",
+            "certificate_hash": "c5cb3992dfe4ab4ec16ae3c6e54713b6509aa55a"
+          }
+        },
+        {
+          "client_id": "901079063562-n1sbq2uekltkgluuj816v1goreb51e1p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxr1xIZjAfxg1yy8A7EH1QI40zGm-W3bk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "901079063562-n1sbq2uekltkgluuj816v1goreb51e1p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
