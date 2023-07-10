@@ -1,3 +1,4 @@
+import 'package:controlrele/write/write.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/cupertino.dart';
@@ -23,6 +24,7 @@ class _HomePageState extends State<HomePage> {
   final _db = FirebaseDatabase.instance.ref();
   final _formKey = GlobalKey<FormState>();
   final _nameController = TextEditingController();
+  final _disp = TextEditingController();
   //var list = List<int>.generate(30, (i) => 0 + i);
   var list = [0xf4B6, 0xf785, 0xf6cb];
   @override
@@ -34,10 +36,10 @@ class _HomePageState extends State<HomePage> {
           PopupMenuButton<int>(
             onSelected: (item) => onSelected(context, item),
             itemBuilder: (context) => [
-              PopupMenuItem(
+              const PopupMenuItem(
                 value: 0,
                 child: Row(
-                  children: const [
+                  children: [
                     Icon(
                       Icons.support_agent,
                     ),
@@ -45,10 +47,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-              PopupMenuItem(
+              const PopupMenuItem(
                 value: 1,
                 child: Row(
-                  children: const [
+                  children: [
                     Icon(
                       Icons.bluetooth,
                     ),
@@ -56,11 +58,10 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
               ),
-           
-              PopupMenuItem(
+              const PopupMenuItem(
                 value: 2,
                 child: Row(
-                  children: const [
+                  children: [
                     Icon(
                       Icons.logout,
                     ),
@@ -71,19 +72,29 @@ class _HomePageState extends State<HomePage> {
               PopupMenuItem(
                 value: 3,
                 child: Row(
-                  children: const [
-                    Icon(
-                      Icons.developer_mode,
-                    ),
-                    Text(" DevTool")
+                  children: [
+                    SizedBox(
+                      width: 100,
+                      child: TextField(
+                          controller: _disp,
+                          keyboardType: TextInputType.number,
+                          decoration: const InputDecoration(
+                            hintText: 'Restore',
+                            prefixIcon: Padding(
+                              padding: EdgeInsetsDirectional.only(start: 2),
+                              child: Icon(
+                                Icons.cloud,
+                              ),
+                            ),
+                          )),
+                    )
                   ],
                 ),
               ),
-
-                 PopupMenuItem(
+              const PopupMenuItem(
                 value: 4,
                 child: Row(
-                  children: const [
+                  children: [
                     Icon(
                       Icons.date_range,
                     ),
@@ -126,13 +137,12 @@ class _HomePageState extends State<HomePage> {
                                           .child(
                                               'data${data.datosProvider!.dsp}')
                                           .child("Relay1")
-                                          .update({
-                                        'relay1': !data.relay1!.relay1
-                                      });
+                                          .update(
+                                              {'relay1': !data.relay1!.relay1});
                                     },
                                     onLongPress: () {
                                       HapticFeedback.mediumImpact();
-          
+
                                       _dispN2(
                                           "Relay1",
                                           "isEnable",
@@ -153,6 +163,7 @@ class _HomePageState extends State<HomePage> {
                                     MainAxisAlignment.spaceAround,
                                 children: [
                                   NeuButton(
+                                    eventStatus:data.relay2!.event ,
                                     isEnable: data.relay2!.isEnable,
                                     onLongPress: () {
                                       HapticFeedback.mediumImpact();
@@ -170,9 +181,8 @@ class _HomePageState extends State<HomePage> {
                                           .child(
                                               'data${data.datosProvider!.dsp}')
                                           .child("Relay2")
-                                          .update({
-                                        'relay2': !data.relay2!.relay2
-                                      });
+                                          .update(
+                                              {'relay2': !data.relay2!.relay2});
                                     },
                                     cupertinoIcon: IconData(
                                         data.relay2!.dataIcon,
@@ -204,9 +214,8 @@ class _HomePageState extends State<HomePage> {
                                           .child(
                                               'data${data.datosProvider!.dsp}')
                                           .child("Relay3")
-                                          .update({
-                                        'relay3': !data.relay3!.relay3
-                                      });
+                                          .update(
+                                              {'relay3': !data.relay3!.relay3});
                                     },
                                     cupertinoIcon: IconData(
                                         data.relay3!.dataIcon,
@@ -238,9 +247,8 @@ class _HomePageState extends State<HomePage> {
                                           .child(
                                               'data${data.datosProvider!.dsp}')
                                           .child("Relay4")
-                                          .update({
-                                        'relay4': !data.relay4!.relay4
-                                      });
+                                          .update(
+                                              {'relay4': !data.relay4!.relay4});
                                     },
                                     cupertinoIcon: IconData(
                                         data.relay4!.dataIcon,
@@ -312,13 +320,15 @@ class _HomePageState extends State<HomePage> {
         break;
       case 3:
         SharedPreferences preference = await SharedPreferences.getInstance();
-        preference.setString("disp", "1089");
+        preference.setString("disp", _disp.text);
+        Write().restoreDB(_disp.text);
+
         // Timer.periodic(const Duration(seconds: 6), (timer) {
         //   Restart.restartApp();
         // });
         break;
       case 4:
-       Navigator.of(context).push(_goToEvent());
+        Navigator.of(context).push(_goToEvent());
         break;
     }
   }
@@ -457,6 +467,8 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+  restoreRTDB() {}
 }
 
 Route _goToBle() {
@@ -478,10 +490,10 @@ Route _goToBle() {
     },
   );
 }
+
 Route _goToEvent() {
   return PageRouteBuilder(
-    pageBuilder: (context, animation, secondaryAnimation) =>
-        const EventHome(),
+    pageBuilder: (context, animation, secondaryAnimation) => const EventHome(),
     transitionsBuilder: (context, animation, secondaryAnimation, child) {
       const begin = Offset(0.0, 1.0);
       const end = Offset.zero;
@@ -497,4 +509,3 @@ Route _goToEvent() {
     },
   );
 }
-

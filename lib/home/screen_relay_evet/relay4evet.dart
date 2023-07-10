@@ -51,17 +51,20 @@ class _Relay4EventState extends State<Relay4Event> {
                               color: Colors.deepOrangeAccent),
                         ),
                       ),
-                      Switch(
-                          activeColor: Colors.green,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          value: data.relay4!.event,
-                          onChanged: (bool a) {
-                            _db
-                                .child('data${data.datosProvider!.dsp}')
-                                .child('Relay4')
-                                .update({'event': a});
-                          })
+                      Row(
+                        children: [
+                 CupertinoSwitch(
+                              activeColor:const Color.fromARGB(255, 49, 255, 56), 
+                          
+                              value: data.relay4!.event,
+                              onChanged: (bool a) {
+                                _db
+                                    .child('data${data.datosProvider!.dsp}')
+                                    .child('Relay4')
+                                    .update({'event': a});
+                              }),
+                        ],
+                      )
                     ],
                   ),
                   Row(
@@ -72,7 +75,7 @@ class _Relay4EventState extends State<Relay4Event> {
                             padding: EdgeInsets.zero,
                             tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                         child: Text(
-                          "  Ligar: ${data.relay3!.initTime}      ",
+                          "  Ligar: ${data.relay4!.initTime}      ",
                           style: const TextStyle(
                               color: Colors.yellow, fontSize: 18),
                         ),
@@ -152,7 +155,7 @@ class _Relay4EventState extends State<Relay4Event> {
                         padding: EdgeInsets.zero,
                         tapTargetSize: MaterialTapTargetSize.shrinkWrap),
                     child: Text(
-                      "  Desligar: ${data.relay3!.endTime}",
+                      "  Desligar: ${data.relay4!.endTime}",
                       style:
                           const TextStyle(color: Colors.yellow, fontSize: 18),
                     ),

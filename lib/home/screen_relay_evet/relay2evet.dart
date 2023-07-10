@@ -51,17 +51,20 @@ class _Relay2EventState extends State<Relay2Event> {
                               color: Colors.deepOrangeAccent),
                         ),
                       ),
-                      Switch(
-                          activeColor: Colors.green,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          value: data.relay2!.event,
-                          onChanged: (bool a) {
-                            _db
-                                .child('data${data.datosProvider!.dsp}')
-                                .child('Relay2')
-                                .update({'event': a});
-                          })
+                      Row(
+                        children: [
+                   CupertinoSwitch(
+                              activeColor: const Color.fromARGB(255, 49, 255, 56), 
+                            
+                              value: data.relay2!.event,
+                              onChanged: (bool a) {
+                                _db
+                                    .child('data${data.datosProvider!.dsp}')
+                                    .child('Relay2')
+                                    .update({'event': a});
+                              }),
+                        ],
+                      )
                     ],
                   ),
                   Row(

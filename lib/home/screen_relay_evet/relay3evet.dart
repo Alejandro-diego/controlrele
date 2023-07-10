@@ -49,17 +49,20 @@ class _Relay3EventState extends State<Relay3Event> {
                               color: Colors.deepOrangeAccent),
                         ),
                       ),
-                      Switch(
-                          activeColor: Colors.green,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          value: data.relay3!.event,
-                          onChanged: (bool a) {
-                            _db
-                                .child('data${data.datosProvider!.dsp}')
-                                .child('Relay3')
-                                .update({'event': a});
-                          })
+                      Row(
+                        children: [
+                    CupertinoSwitch(
+                              activeColor: const  Color.fromARGB(255, 49, 255, 56), 
+                      
+                              value: data.relay3!.event,
+                              onChanged: (bool a) {
+                                _db
+                                    .child('data${data.datosProvider!.dsp}')
+                                    .child('Relay3')
+                                    .update({'event': a});
+                              }),
+                        ],
+                      )
                     ],
                   ),
                   Row(

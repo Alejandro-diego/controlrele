@@ -1,3 +1,4 @@
+import 'package:controlrele/write/write.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -121,7 +122,7 @@ class _SingUpState extends State<SingUp> {
         password: senha.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      print(e.code);
+     
       if (e.code == 'email-already-in-use') {
         error = "O endereço de e-mail já está sendo usado por outra conta.";
       } else if (e.code == 'invalid-email') {
@@ -145,13 +146,10 @@ class _SingUpState extends State<SingUp> {
   Future<void> colocarCredenciales() async {
     SharedPreferences preference = await SharedPreferences.getInstance();
 
-    
-        preference.setString('email', email.text);
-        preference.setString('password', senha.text);
-       
-        preference.setString('nome', usuario.text);
-    
-  }
+    preference.setString('email', email.text);
+    preference.setString('password', senha.text);
+    preference.setString('nome', usuario.text);
 
-  
+    Write().restoreDB(disp.text);
+  }
 }

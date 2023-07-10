@@ -4,7 +4,6 @@ import 'package:controlrele/model/data_relay1.dart';
 import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/foundation.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'data_relay2.dart';
 import 'data_relay3.dart';
 import 'data_relay4.dart';
@@ -81,7 +80,7 @@ class ProviderRTDB extends ChangeNotifier {
         notifyListeners();
       });
     } else {
-      print("base de datos podre");
+     
     }
   }
 

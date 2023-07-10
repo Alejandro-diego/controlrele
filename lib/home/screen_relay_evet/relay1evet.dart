@@ -50,17 +50,21 @@ class _Relay1EventState extends State<Relay1Event> {
                               color: Colors.deepOrangeAccent),
                         ),
                       ),
-                      Switch(
-                          activeColor: Colors.green,
-                          materialTapTargetSize:
-                              MaterialTapTargetSize.shrinkWrap,
-                          value: data.relay1!.event,
-                          onChanged: (bool a) {
-                            _db
-                                .child('data${data.datosProvider!.dsp}')
-                                .child('Relay1')
-                                .update({'event': a});
-                          })
+                      Row(
+                        children: [
+                          const Text('Habilitar'),
+                          CupertinoSwitch(
+                              activeColor:
+                                  const Color.fromARGB(255, 49, 255, 56),                              
+                              value: data.relay1!.event,
+                              onChanged: (bool a) {
+                                _db
+                                    .child('data${data.datosProvider!.dsp}')
+                                    .child('Relay1')
+                                    .update({'event': a});
+                              }),
+                        ],
+                      )
                     ],
                   ),
                   Row(
@@ -160,7 +164,7 @@ class _Relay1EventState extends State<Relay1Event> {
                       TimeOfDay? endTime = await showTimePicker(
                           context: context, initialTime: TimeOfDay.now());
 
-                           if (endTime == null) return;
+                      if (endTime == null) return;
 
                       final now = DateTime.now();
                       final time = DateTime(now.year, now.month, now.day,
@@ -201,6 +205,7 @@ class _Relay1EventState extends State<Relay1Event> {
           : const Center(
               child: CupertinoActivityIndicator(),
             );
+      
     });
   }
 

@@ -1,4 +1,3 @@
-import 'package:controlrele/utils.dart';
 
 class Relay4 {
   bool allDay;

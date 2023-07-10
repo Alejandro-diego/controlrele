@@ -179,14 +179,14 @@ class _LoginPageState extends State<LoginPage> {
         password: senha.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-      print(e.code);
+     
       if (e.code == 'user-not-found') {
         error = "E-mail não registrado";
         if (tentativasEmail++ > 2) {
           _changeOpacityEmail();
           buttonNeedAcountIsEnable = true;
         }
-        print(tentativasEmail);
+       
       } else if (e.code == 'wrong-password') {
         error = "Senha invalida";
 
