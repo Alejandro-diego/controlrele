@@ -127,6 +127,7 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
+                                  //boton1
                                   NeuButton(
                                     eventStatus: data.relay1!.event,
                                     isEnable: data.relay1!.isEnable,
@@ -162,6 +163,7 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
+                                  //boton2
                                   NeuButton(
                                     eventStatus:data.relay2!.event ,
                                     isEnable: data.relay2!.isEnable,
@@ -196,7 +198,9 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
+                                  //boton3
                                   NeuButton(
+                                     eventStatus: data.relay3!.event,
                                     onLongPress: () {
                                       HapticFeedback.mediumImpact();
                                       _dispN2(
@@ -229,7 +233,9 @@ class _HomePageState extends State<HomePage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
                                 children: [
+                                  //boton4
                                   NeuButton(
+                                    eventStatus: data.relay4!.event,
                                     onLongPress: () {
                                       HapticFeedback.mediumImpact();
                                       _dispN2(
