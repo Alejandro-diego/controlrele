@@ -5,10 +5,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
 import '../model/providerdata.dart';
-import 'package:flutter_exit_app/flutter_exit_app.dart';
 import '../widget/button.dart';
 import 'ble_home_page.dart';
 import 'event_home.dart';

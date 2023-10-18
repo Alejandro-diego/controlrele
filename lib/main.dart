@@ -1,4 +1,8 @@
 import 'package:controlrele/model/providerdata.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:page_transition/page_transition.dart';
+import 'package:lottie/lottie.dart';
+import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/cupertino.dart';
@@ -34,7 +38,40 @@ class Miapp extends StatelessWidget {
         brightness: Brightness.dark,
         primarySwatch: Colors.grey,
       ),
-      home: const MainPage(),
+      home: const Splash(),
+    );
+  }
+}
+
+class Splash extends StatelessWidget {
+  const Splash({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedSplashScreen(
+      splashTransition:SplashTransition.slideTransition ,
+      pageTransitionType: PageTransitionType.fade,
+      backgroundColor: Colors.black,
+      duration: 4000,
+      splash:  Row(
+        children: [
+          Lottie.asset('assets/bolas1.json'),
+             Text(
+            'IOT',
+            style: GoogleFonts.roboto(
+              fontWeight: FontWeight.w500,
+              textStyle: const TextStyle(color: Colors.red, fontSize: 60),
+            ),
+          ),
+          Text(
+            'ech',
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(color: Colors.white, fontSize: 50),
+            ),
+          ),
+        ],
+      ),
+      nextScreen: const MainPage(),
     );
   }
 }

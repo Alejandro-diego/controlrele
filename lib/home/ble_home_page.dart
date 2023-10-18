@@ -5,7 +5,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_blue/flutter_blue.dart';
-import 'package:restart_app/restart_app.dart';
 import 'dart:convert' show utf8;
 
 import 'package:shared_preferences/shared_preferences.dart';
@@ -392,9 +391,7 @@ class _DeviceState extends State<Device> {
         builder: (context) => const HomePage(),
       ),
     );*/
-    Timer.periodic(const Duration(seconds: 6), (timer) {
-      Restart.restartApp();
-    });
+   
   }
 
   Future<void> colocarCredenciales() async {
