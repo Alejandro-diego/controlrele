@@ -130,7 +130,7 @@ class _SingUpState extends State<SingUp> {
       } else if (e.code == 'too-many-requests') {
         error = "Sua conta foi bloqueda temporariaramente";
       }
-
+      if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.black,

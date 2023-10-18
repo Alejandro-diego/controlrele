@@ -22,11 +22,13 @@ class _LoginPageState extends State<LoginPage> {
   final _formKey = GlobalKey<FormState>();
   final email = TextEditingController();
   final senha = TextEditingController();
+  final disp = TextEditingController();
   late bool buttonNeedAcountIsEnable = false;
   @override
   void dispose() {
     email.dispose();
     senha.dispose();
+    disp.dispose();
     super.dispose();
   }
 
@@ -61,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
               top: size.height * 0.05,
               child: FormSigIn(
                 nameController: TextEditingController(),
-                dispController: TextEditingController(),
+                dispController: disp,
                 isSingUP: false,
                 keyvalidator: _formKey,
                 passcontroller: senha,
@@ -179,14 +181,12 @@ class _LoginPageState extends State<LoginPage> {
         password: senha.text.trim(),
       );
     } on FirebaseAuthException catch (e) {
-     
       if (e.code == 'user-not-found') {
         error = "E-mail não registrado";
         if (tentativasEmail++ > 2) {
           _changeOpacityEmail();
           buttonNeedAcountIsEnable = true;
         }
-       
       } else if (e.code == 'wrong-password') {
         error = "Senha invalida";
 
@@ -200,7 +200,7 @@ class _LoginPageState extends State<LoginPage> {
           _changeOpacityPass();
         }
       }
-
+      if (!context.mounted) return;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
           backgroundColor: Colors.black,
@@ -220,6 +220,7 @@ class _LoginPageState extends State<LoginPage> {
       () {
         preference.setString('email', email.text);
         preference.setString('password', senha.text);
+        preference.setString('disp', disp.text);
       },
     );
   }
@@ -237,7 +238,7 @@ class _LoginPageState extends State<LoginPage> {
 
     var text = preference.getString('email') ?? '';
 
-    if (text.isEmpty ) {
+    if (text.isEmpty) {
       buttonNeedAcountIsEnable = true;
     }
   }

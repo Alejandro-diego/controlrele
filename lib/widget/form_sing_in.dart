@@ -132,8 +132,8 @@ class _FormSigInState extends State<FormSigIn> {
                 return null;
               },
             ),
-            widget.isSingUP
-                ? TextFormField(
+           
+                 TextFormField(
                     keyboardType: TextInputType.number,
                     controller: widget.dispController,
                     cursorColor: Colors.amberAccent,
@@ -159,8 +159,8 @@ class _FormSigInState extends State<FormSigIn> {
                       }
                       return null;
                     },
-                  )
-                : const Text(""),
+                  ),
+               
             const Spacer(flex: 2)
           ],
         ),

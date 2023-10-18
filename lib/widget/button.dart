@@ -33,13 +33,14 @@ class NeuButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onLongPress: onLongPress,
       onTap: isEnable ? onTap : () {},
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
         height: 70.0,
-        width: 250.0,
+        width: size.width * .80,
         decoration: BoxDecoration(
           border: Border.all(
               color: !isButtonPressed
@@ -68,7 +69,7 @@ class NeuButton extends StatelessWidget {
           children: [
             Positioned(
               top: 15,
-              left: 180,
+              left: size.width * .6,
               child: Icon(
                 !isButtonPressed ? cupertinoIcon : cupertinoIcon,
                 size: !isButtonPressed ? 35 : 40,
@@ -92,8 +93,7 @@ class NeuButton extends StatelessWidget {
             Positioned(
                 left: 10.0,
                 bottom: 10,
-                child: Icon(
-                  
+                child: Icon(                  
                   Icons.access_time,size: 17,
                   color: eventStatus ? Colors.red : Colors.grey.shade900,
                 )),
