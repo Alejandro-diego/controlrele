@@ -36,7 +36,7 @@ class _EventHomeState extends State<EventHome> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                     Relay1Event(),
+                    Relay1Event(),
                     Relay2Event(),
                     Relay3Event(),
                     Relay4Event(),
